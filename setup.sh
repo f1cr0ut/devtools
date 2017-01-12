@@ -57,6 +57,28 @@ make -j32 install
 cd ../
 rm -rf readline-master*
 
+# build sqlite3
+# this library is for python
+wget https://sqlite.org/2017/sqlite-autoconf-3160200.tar.gz
+tar zxf sqlite-autoconf-3160200.tar.gz
+cd sqlite-autoconf-3160200
+./configure --prefix=$1
+make -j32
+make -j32 install
+cd ../
+rm -rf sqlite-autoconf-3160200*
+
+# build bz2
+# this library is for python
+wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+tar zxf bzip2-1.0.6.tar.gz
+cd bzip2-1.0.6
+./configure --prefix=$1
+make -j32
+make -j32 install
+cd ../
+rm -rf bzip2-1.0.6*
+
 # build zlib
 wget http://zlib.net/zlib-1.2.10.tar.gz
 tar zxf zlib-1.2.10.tar.gz
