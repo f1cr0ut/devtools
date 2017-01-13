@@ -73,9 +73,8 @@ rm -rf sqlite-autoconf-3160200*
 wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 tar zxf bzip2-1.0.6.tar.gz
 cd bzip2-1.0.6
-./configure --prefix=$1
 make -j32
-make -j32 install
+make install PREFIX=$1
 cd ../
 rm -rf bzip2-1.0.6*
 
@@ -93,7 +92,7 @@ rm -rf zlib-1.2.10*
 wget https://www.openssl.org/source/openssl-1.1.0c.tar.gz
 tar zxf openssl-1.1.0c.tar.gz
 cd openssl-1.1.0c
-./config shared zlib --prefix=$1 -I$1/include -L$1/lib
+./config shared zlib --prefix=$1 -I$1/include -L$1/lib -L$1/lib64
 make -j32
 make -j32 install
 cd ..
@@ -103,7 +102,7 @@ rm -rf openssl-1.1.0c*
 wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.0.tar.gz
 tar zxf ruby-2.4.0.tar.gz
 cd ruby-2.4.0
-./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS=-L$1/lib
+./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS="-L$1/lib -L$1/lib64"
 make -j32
 make -j32 install
 cd ..
@@ -113,7 +112,7 @@ rm -rf ruby-2.4.0*
 wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
 tar zxf Python-3.6.0.tgz
 cd Python-3.6.0
-./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS=-L$1/lib
+./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS="-L$1/lib -L$1/lib64"
 make -j32
 make -j32 install
 cd ..
