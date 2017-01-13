@@ -25,7 +25,7 @@ wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz
 tar zxf nginx-1.11.8.tar.gz
 tar zxf pcre-8.40.tar.gz
 cd nginx-1.11.8
-./configure --prefix=$1  --with-openssl=../openssl-1.1.0c --add-module=../headers-more-nginx-module/ --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.10  --with-http_ssl_module --with-http_v2_module
+./configure --prefix=$1  --with-openssl=../openssl-1.1.0c --add-module=../headers-more-nginx-module/ --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.10  --with-http_ssl_module --with-http_v2_module --with-select_module --with-poll_module --with-pcre-jit
 make -j32
 make -j32 install
 cd ../
