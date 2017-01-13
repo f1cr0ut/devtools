@@ -1,7 +1,9 @@
 #!/bin/bash
+
 if [ $# -ne 1 ]; then
 	echo "input prefix dir without last / like:"
 	echo "/home/username/local"
+	echo "this must be absolute path"
 	exit 1
 fi
 
