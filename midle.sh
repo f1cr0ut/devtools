@@ -30,3 +30,27 @@ make -j32
 make -j32 install
 cd ../
 rm -rf nginx-1.11.8* headers-more-nginx-module* pcre-8.40* *zlib-1.2.11* openssl-1.1.0c*
+
+# build MySQL
+# 
+git clone https://github.com/mysql/mysql-server.git
+mkdir $1/sock
+cd mysql-server
+mkdir mybuild
+cd mybuild 
+cmake .. -DDOWNLOAD_BOOST=1 -DWITH_BOOST=./ -DCMAKE_INSTALL_PREFIX=$1 -DMYSQL_UNIX_ADDR=$1/sock/mysql.sock
+make -j32
+make -j32 install
+# setup MySQL
+cd $1
+bin/mysqld --initialize --user=$USER
+bin/mysql_ssl_rsa_setup
+bin/mysqld_safe --user=$USER
+# setup is now ended, and you have to change the root password
+# and here is reset root password insecure way
+#
+# support-files/mysql.server start --skip-grant-tables
+# bin/mysql -u root
+# on mysql console, hit bellow:
+# ALTER USER 'root'@'localhost' IDENTIFIED BY 'your-password';
+# then root pasword has changed. logout and reboot mysql.server.
