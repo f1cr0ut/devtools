@@ -7,12 +7,12 @@ if [ $# -ne 1 ]; then
 fi
 
 # set bin path and lib path to use newest gcc compiler
-export PATH="$1/bin:$1/sbin:$1/libexec/gcc/x86_64-pc-linux-gnu/6.3.0:$PATH"
+export PATH="$1/bin:$1/libexec/gcc/x86_64-pc-linux-gnu/6.3.0:$PATH"
 export LD_LIBRARY_PATH="$1/lib:$1/lib64:$LD_LIBRARY_PATH"
 
 # download zlib
-wget http://zlib.net/zlib-1.2.10.tar.gz
-tar zxf zlib-1.2.10.tar.gz
+wget http://zlib.net/zlib-1.2.11.tar.gz
+tar zxf zlib-1.2.11.tar.gz
 
 # download openssl
 wget https://www.openssl.org/source/openssl-1.1.0c.tar.gz
@@ -25,8 +25,8 @@ wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz
 tar zxf nginx-1.11.8.tar.gz
 tar zxf pcre-8.40.tar.gz
 cd nginx-1.11.8
-./configure --prefix=$1  --with-openssl=../openssl-1.1.0c --add-module=../headers-more-nginx-module/ --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.10  --with-http_ssl_module --with-http_v2_module --with-select_module --with-poll_module --with-pcre-jit
+./configure --prefix=$1  --with-openssl=../openssl-1.1.0c --add-module=../headers-more-nginx-module/ --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11  --with-http_ssl_module --with-http_v2_module --with-select_module --with-poll_module --with-pcre-jit
 make -j32
 make -j32 install
 cd ../
-rm -rf nginx-1.11.8* headers-more-nginx-module* pcre-8.40* *zlib-1.2.10* openssl-1.1.0c*
+rm -rf nginx-1.11.8* headers-more-nginx-module* pcre-8.40* *zlib-1.2.11* openssl-1.1.0c*

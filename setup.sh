@@ -81,14 +81,14 @@ cd ../
 rm -rf bzip2-1.0.6*
 
 # build zlib
-wget http://zlib.net/zlib-1.2.10.tar.gz
-tar zxf zlib-1.2.10.tar.gz
-cd zlib-1.2.10
+wget http://zlib.net/zlib-1.2.11.tar.gz
+tar zxf zlib-1.2.11.tar.gz
+cd zlib-1.2.11
 ./configure --prefix=$1
 make -j32
 make -j32 install
 cd ../
-rm -rf zlib-1.2.10*
+rm -rf zlib-1.2.11*
 
 # build openssl
 wget https://www.openssl.org/source/openssl-1.1.0c.tar.gz
