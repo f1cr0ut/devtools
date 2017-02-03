@@ -26,8 +26,8 @@ tar zxf nginx-1.11.8.tar.gz
 tar zxf pcre-8.40.tar.gz
 cd nginx-1.11.8
 ./configure --prefix=$1  --with-openssl=../openssl-1.1.0c --add-module=../headers-more-nginx-module/ --with-pcre=../pcre-8.40 --with-zlib=../zlib-1.2.11  --with-http_ssl_module --with-http_v2_module --with-select_module --with-poll_module --with-pcre-jit
-make -j32
-make -j32 install
+make 
+make  install
 cd ../
 rm -rf nginx-1.11.8* headers-more-nginx-module* pcre-8.40* *zlib-1.2.11* openssl-1.1.0c*
 
@@ -39,8 +39,8 @@ cd mysql-server
 mkdir mybuild
 cd mybuild 
 cmake .. -DDOWNLOAD_BOOST=1 -DWITH_BOOST=./ -DCMAKE_INSTALL_PREFIX=$1 -DMYSQL_UNIX_ADDR=$1/sock/mysql.sock
-make -j32
-make -j32 install
+make 
+make  install
 # setup MySQL
 cd $1
 bin/mysqld --initialize --user=$USER

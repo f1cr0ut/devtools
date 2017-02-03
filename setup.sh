@@ -15,8 +15,8 @@ cd glibc-2.24
 mkdir build
 cd build
 ../configure --prefix=$1
-make -j32
-make -j32 install
+make 
+make  install
 cd ../../
 rm -rf glibc-2.24*
 
@@ -28,8 +28,8 @@ cd gcc-6.3.0
 mkdir build
 cd build
 ../configure --prefix=$1 -enable-languages=c,c++ --disable-bootstrap --disable-multilib LDFLAGS="-L$1/lib -L$1/lib64 -Wl,--rpath=$1/lib -Wl,--dynamic-linker=$1/lib/ld-linux-x86-64.so.2"
-make -j32 
-make -j32 install
+make  
+make  install
 cd ../../
 rm -rf gcc-6.3.0*
 
@@ -41,8 +41,8 @@ wget http://zlib.net/zlib-1.2.11.tar.gz
 tar zxf zlib-1.2.11.tar.gz
 cd zlib-1.2.11
 ./configure --prefix=$1
-make -j32 LDFLAGS="-L$1/lib -L$1/lib64 -Wl,--rpath=$1/lib -Wl,--dynamic-linker=$1/lib/ld-linux-x86-64.so.2"
-make -j32 install
+make  LDFLAGS="-L$1/lib -L$1/lib64 -Wl,--rpath=$1/lib -Wl,--dynamic-linker=$1/lib/ld-linux-x86-64.so.2"
+make  install
 cd ../
 rm -rf zlib-1.2.11*
 
@@ -52,8 +52,8 @@ wget ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.12.tar.gz
 tar zxf gdbm-1.12.tar.gz
 cd gdbm-1.12
 ./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS="-L$1/lib -L$1/lib64 -Wl,--rpath=$1/lib -Wl,--dynamic-linker=$1/lib/ld-linux-x86-64.so.2"
-make -j32
-make -j32 install
+make 
+make  install
 cd ../
 rm -rf gdbm-1.12*
 
@@ -63,8 +63,8 @@ wget http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-master.tar.
 tar zxf readline-master.tar.gz
 cd readline-master
 ./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS="-L$1/lib -L$1/lib64 -Wl,--rpath=$1/lib -Wl,--dynamic-linker=$1/lib/ld-linux-x86-64.so.2"
-make -j32
-make -j32 install
+make 
+make  install
 cd ../
 rm -rf readline-master*
 
@@ -74,8 +74,8 @@ wget https://sqlite.org/2017/sqlite-autoconf-3160200.tar.gz
 tar zxf sqlite-autoconf-3160200.tar.gz
 cd sqlite-autoconf-3160200
 ./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS="-L$1/lib -L$1/lib64 -Wl,--rpath=$1/lib -Wl,--dynamic-linker=$1/lib/ld-linux-x86-64.so.2"
-make -j32
-make -j32 install
+make 
+make  install
 cd ../
 rm -rf sqlite-autoconf-3160200*
 
@@ -84,7 +84,7 @@ rm -rf sqlite-autoconf-3160200*
 wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 tar zxf bzip2-1.0.6.tar.gz
 cd bzip2-1.0.6
-make -j32 -f Makefile-libbz2_so
+make  -f Makefile-libbz2_so
 make install PREFIX=$1
 cp libbz2.so.1.0* $1/lib
 cd ../
@@ -95,8 +95,8 @@ wget https://www.openssl.org/source/openssl-1.1.0c.tar.gz
 tar zxf openssl-1.1.0c.tar.gz
 cd openssl-1.1.0c
 ./config shared zlib --prefix=$1 -I$1/include -L$1/lib -L$1/lib64
-make -j32
-make -j32 install
+make 
+make  install
 cd ..
 rm -rf openssl-1.1.0c*
 
@@ -105,8 +105,8 @@ wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.0.tar.gz
 tar zxf ruby-2.4.0.tar.gz
 cd ruby-2.4.0
 ./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS="-L$1/lib -L$1/lib64"
-make -j32
-make -j32 install
+make 
+make  install
 cd ..
 rm -rf ruby-2.4.0*
 
@@ -115,7 +115,7 @@ wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
 tar zxf Python-3.6.0.tgz
 cd Python-3.6.0
 ./configure --prefix=$1 CFLAGS=-I$1/include LDFLAGS="-L$1/lib -L$1/lib64"
-make -j32
-make -j32 install
+make 
+make  install
 cd ..
 rm -rf Python-3.6.0*
